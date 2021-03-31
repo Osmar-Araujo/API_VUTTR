@@ -24,7 +24,12 @@ public class Tool {
 	private String title;
 	private String link;
 	private String description;
+
 	
 	public Tool(ToolDTO tooldto) {
+		this.id = tooldto.getId();
+		this.title = tooldto.getTitle();
+		this.link = tooldto.getLink();
+		this.description = tooldto.getDescription();
 	}
 }

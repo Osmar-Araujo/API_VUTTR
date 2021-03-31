@@ -12,7 +12,8 @@ public class ToolDTO {
 	private Long id;
 	private String title;
 	private String link;
-	private String description;	
+	private String description;
+	
 	
     public ToolDTO(Long id, String title, String link, String description) {
     	this.id = id;
