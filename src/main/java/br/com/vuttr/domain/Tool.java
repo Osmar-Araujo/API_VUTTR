@@ -7,6 +7,7 @@ import javax.persistence.Id;
 
 import br.com.vuttr.domain.dto.ToolDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Tool {
 	
 	

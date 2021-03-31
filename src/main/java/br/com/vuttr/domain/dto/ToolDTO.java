@@ -1,11 +1,13 @@
 package br.com.vuttr.domain.dto;
 
 import br.com.vuttr.domain.Tool;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@Builder
 public class ToolDTO {
 	
 	
