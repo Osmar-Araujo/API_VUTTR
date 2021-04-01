@@ -15,13 +15,15 @@ public class ToolDTO {
 	private String title;
 	private String link;
 	private String description;
+	public String tags[];
 	
 	
-    public ToolDTO(Long id, String title, String link, String description) {
+    public ToolDTO(Long id, String title, String link, String description, String tags[]) {
     	this.id = id;
     	this.title = title;
     	this.link = link;
     	this.description = description;
+    	this.tags = tags;
     	
 	}
     
@@ -30,5 +32,6 @@ public class ToolDTO {
     	title = entity.getTitle();
     	link = entity.getLink();
     	description = entity.getDescription();
+    	tags = entity.getTags();
     }
 }

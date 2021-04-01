@@ -3,6 +3,7 @@ create table tool(
 	description varchar(255) not null,
 	link varchar(255) not null,
 	title varchar(255) not null,
+	tags varchar(255) not null,
 	
 	primary key (id)
 );

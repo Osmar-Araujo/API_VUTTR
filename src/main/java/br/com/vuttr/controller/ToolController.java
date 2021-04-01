@@ -33,6 +33,11 @@ public class ToolController {
 		return services.findAll();
 	}
 	
+	@GetMapping("tag/{tag}")
+	public ToolDTO buscarTag(@PathVariable String tag) {
+		return (ToolDTO) services.buscaTag(tag);
+	}
+	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public ToolDTO inserir(@RequestBody ToolDTO tooldto) {

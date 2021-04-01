@@ -32,5 +32,9 @@ public class ToolServices {
 	public void delete(Long id) {
 		repository.deleteById(id);
 	}
+	
+	public Iterable<ToolDTO> buscaTag(String tags) {
+		return repository.findByTags(tags);
+	}
 }
 
