@@ -11,47 +11,44 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.vuttr.domain.dto.ToolDTO;
-import br.com.vuttr.repository.ToolRepository;
 import br.com.vuttr.service.ToolServices;
 
 @RestController
 @RequestMapping("/tools")
 public class ToolController {
-	
+
 	@Autowired
 	ToolServices services;
-	
-	@Autowired
-	ToolRepository repository;
-	    
+
+
 	@GetMapping
-	public List<ToolDTO> listar(){
-		return services.findAll();
+	public ResponseEntity<List<ToolDTO>> listar(@RequestParam(value = "tag", required = false)  String tag) {
+		List<ToolDTO> result = services.findAll(tag);
+		if (result.isEmpty() || result == null) {
+			return ResponseEntity.noContent().build();
+		}
+
+		return ResponseEntity.ok(result);
 	}
-	
-	@GetMapping("tag/{tag}")
-	public ToolDTO buscarTag(@PathVariable String tag) {
-		return (ToolDTO) services.buscaTag(tag);
-	}
-	
+
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public ToolDTO inserir(@RequestBody ToolDTO tooldto) {
 		return services.save(tooldto);
 	}
-	
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> remover(@PathVariable Long id){
-		if (!repository.existsById(id)) {
-			return ResponseEntity.notFound().build();
-		}
-		
+	public ResponseEntity<Void> remover(@PathVariable Long id) {
+
 		services.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
+	
+
 }
