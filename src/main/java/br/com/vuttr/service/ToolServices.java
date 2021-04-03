@@ -2,6 +2,7 @@ package br.com.vuttr.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class ToolServices {
 		if (tag == null) {
 			return repository.findAll().stream().map(ToolDTO::new).collect(Collectors.toList());
 		} else {
-			return buscaTag(tag);
+			return findByTag(tag);
 
 		}
 
@@ -38,17 +39,17 @@ public class ToolServices {
 		repository.deleteById(id);
 	}
 
-	private List<ToolDTO> buscaTag(String tag) {
+	private List<ToolDTO> findByTag(String tag) {
 
 		return repository.findAll().stream().filter(x -> {
-			for (String t : x.getTags()) {
-				if (t.equals(tag)) {
-					return true;
-				}
-			}
-			return false;
+			return Stream.of(x.getTags()).filter(sa -> sa.equals(tag)).findFirst().isPresent();
 		}).map(ToolDTO::new).collect(Collectors.toList());
-
+		
 	}
-
+	
+	public ToolDTO update(ToolDTO dto, Long id) {
+		Tool tool = new Tool(dto);
+		tool = repository.save(tool);
+		return new ToolDTO(tool);
+	}
 }
