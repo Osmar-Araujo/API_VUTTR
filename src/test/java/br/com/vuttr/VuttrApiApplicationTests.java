@@ -1,11 +1,9 @@
 package br.com.vuttr;
 
-import org.springframework.boot.test.context.SpringBootTest;
-
 import br.com.vuttr.domain.dto.ToolDTO;
 
-@SpringBootTest
-class VuttrApiApplicationTests {
+	public class VuttrApiApplicationTests {
+		
 	
 	
 	/*
