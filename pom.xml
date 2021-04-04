@@ -14,7 +14,7 @@
 	<name>VUTTR_API</name>
 	<description>API VUTTR (Very Usefull Tolls to Remember)</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
